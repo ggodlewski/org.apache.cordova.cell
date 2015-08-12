@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="org.apache.cordova.cell" version="0.0.1">
+    <name>org.apache.cordova.cell</name>
+    <description>Cordova Cell Plugin</description>
+    <license>MIT</license>
+    <keywords>cordova,cell</keywords>
+
+    <description>
+        Plugin provides geo location based on BTC Cell ID and http://www.google.com/glm/mmap service
+    </description>
+    <license>MIT</license>
+
+    <!-- android -->
+    <platform name="android">
+        <js-module src="platforms/android/www/cellidinfoplugin.js" name="CellId">
+            <clobbers target="CellId" />
+        </js-module>
+
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CellId">
+                <param name="android-package" value="org.apache.cordova.cell.CellIdInfoPlugin" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/*">
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+        </config-file>
+
+        <source-file src="platforms/android/src/org/apache/cordova/cell/CellIdInfoPlugin.java" target-dir="src/org/apache/cordova/cell" />
+
+    </platform>
+
+</plugin>
